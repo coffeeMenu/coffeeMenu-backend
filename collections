@@ -1,0 +1,448 @@
+[
+    {
+        "id": "_pb_users_auth_",
+        "name": "users",
+        "type": "auth",
+        "system": false,
+        "schema": [
+            {
+                "id": "users_name",
+                "name": "name",
+                "type": "text",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": 2,
+                    "max": 64,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "users_avatar",
+                "name": "avatar",
+                "type": "file",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "maxSize": 5242880,
+                    "mimeTypes": [
+                        "image/jpg",
+                        "image/jpeg",
+                        "image/png",
+                        "image/svg+xml",
+                        "image/gif"
+                    ],
+                    "thumbs": null
+                }
+            }
+        ],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "id = @request.auth.id",
+        "deleteRule": "id = @request.auth.id",
+        "options": {
+            "allowEmailAuth": true,
+            "allowOAuth2Auth": false,
+            "allowUsernameAuth": true,
+            "exceptEmailDomains": null,
+            "manageRule": null,
+            "minPasswordLength": 8,
+            "onlyEmailDomains": null,
+            "requireEmail": true
+        }
+    },
+    {
+        "id": "1rfo0vxteg3db8v",
+        "name": "stores",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "id": "jbklonzq",
+                "name": "owner",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": true
+                }
+            },
+            {
+                "id": "tzoo7ngi",
+                "name": "name",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": 2,
+                    "max": 64,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "yyrht1l1",
+                "name": "username",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": true,
+                "options": {
+                    "min": 2,
+                    "max": 32,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "bhmexjia",
+                "name": "address",
+                "type": "text",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "yjpdi1le",
+                "name": "description",
+                "type": "text",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "ifxdoppr",
+                "name": "profile",
+                "type": "file",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "maxSize": 1000000,
+                    "mimeTypes": [
+                        "image/jpg",
+                        "image/jpeg",
+                        "image/png"
+                    ],
+                    "thumbs": [
+                        "200x200"
+                    ]
+                }
+            },
+            {
+                "id": "s7d0aeta",
+                "name": "photos",
+                "type": "file",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 10,
+                    "maxSize": 2000000,
+                    "mimeTypes": [
+                        "image/jpg",
+                        "image/jpeg",
+                        "image/png"
+                    ],
+                    "thumbs": [
+                        "480x720"
+                    ]
+                }
+            },
+            {
+                "id": "hmsezt4v",
+                "name": "orderby_product",
+                "type": "select",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "values": [
+                        "dragdrop",
+                        "name",
+                        "price",
+                        "date"
+                    ]
+                }
+            },
+            {
+                "id": "hdlo03oo",
+                "name": "orderby_category",
+                "type": "select",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "values": [
+                        "dragdrop",
+                        "date",
+                        "name"
+                    ]
+                }
+            }
+        ],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "@request.auth.id = @request.data.owner",
+        "updateRule": "@request.auth.id = owner && @request.data.owner = owner",
+        "deleteRule": "@request.auth.id = owner",
+        "options": {}
+    },
+    {
+        "id": "3tlm5jngy3qofq2",
+        "name": "stores_translation",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "id": "9wt6pjkq",
+                "name": "store",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "1rfo0vxteg3db8v",
+                    "cascadeDelete": true
+                }
+            },
+            {
+                "id": "0gb6bibz",
+                "name": "region",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "listRule": null,
+        "viewRule": null,
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    },
+    {
+        "id": "r2441aew5bpavx5",
+        "name": "products",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "id": "yactv34q",
+                "name": "store",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "1rfo0vxteg3db8v",
+                    "cascadeDelete": true
+                }
+            },
+            {
+                "id": "kywej0oe",
+                "name": "name",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": 2,
+                    "max": 64,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "jrvszhb4",
+                "name": "description",
+                "type": "text",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "rrvrkwff",
+                "name": "category",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "6xrje0tqv2jkizz",
+                    "cascadeDelete": false
+                }
+            },
+            {
+                "id": "qgji3df8",
+                "name": "price",
+                "type": "number",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null
+                }
+            },
+            {
+                "id": "jru0x6u8",
+                "name": "pictures",
+                "type": "file",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 5,
+                    "maxSize": 2000000,
+                    "mimeTypes": [
+                        "image/jpg",
+                        "image/jpeg",
+                        "image/png"
+                    ],
+                    "thumbs": [
+                        "480x720"
+                    ]
+                }
+            },
+            {
+                "id": "ym8shtu1",
+                "name": "discount",
+                "type": "number",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null
+                }
+            },
+            {
+                "id": "11hjdxmh",
+                "name": "order",
+                "type": "number",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null
+                }
+            },
+            {
+                "id": "myfewsyd",
+                "name": "available",
+                "type": "bool",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {}
+            }
+        ],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "@request.auth.id = store.owner",
+        "updateRule": "@request.auth.id = store.owner && @request.data.store = store",
+        "deleteRule": "@request.auth.id = store.owner",
+        "options": {}
+    },
+    {
+        "id": "6xrje0tqv2jkizz",
+        "name": "products_category",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "id": "hvtlzb0c",
+                "name": "name",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": true,
+                "options": {
+                    "min": 2,
+                    "max": 32,
+                    "pattern": ""
+                }
+            }
+        ],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    },
+    {
+        "id": "amb8uo2itmcjg16",
+        "name": "products_translation",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "id": "9nfapyad",
+                "name": "product",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "r2441aew5bpavx5",
+                    "cascadeDelete": true
+                }
+            },
+            {
+                "id": "lbkboh04",
+                "name": "region",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "listRule": null,
+        "viewRule": null,
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    }
+]
