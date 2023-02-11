@@ -396,6 +396,18 @@
                     "max": 32,
                     "pattern": ""
                 }
+            },
+            {
+                "id": "omebuapt",
+                "name": "nice",
+                "type": "number",
+                "system": false,
+                "required": true,
+                "unique": true,
+                "options": {
+                    "min": 1,
+                    "max": null
+                }
             }
         ],
         "listRule": "",
@@ -441,6 +453,85 @@
         "listRule": null,
         "viewRule": null,
         "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    },
+    {
+        "id": "kwylgez9vxeam1n",
+        "name": "bug_reports",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "id": "mth7h00j",
+                "name": "title",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "x55km608",
+                "name": "user",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "_pb_users_auth_",
+                    "cascadeDelete": false
+                }
+            },
+            {
+                "id": "vsdwczik",
+                "name": "store",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "1rfo0vxteg3db8v",
+                    "cascadeDelete": false
+                }
+            },
+            {
+                "id": "rwbasfzf",
+                "name": "description",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "id": "vomhfrgt",
+                "name": "userAgent",
+                "type": "text",
+                "system": false,
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "listRule": null,
+        "viewRule": null,
+        "createRule": "@request.auth.id = @request.data.user",
         "updateRule": null,
         "deleteRule": null,
         "options": {}
